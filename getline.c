@@ -14,7 +14,7 @@ ssize_t input_buf(info_t *info, char **buf, size_t *len)
 	ssize_t r = 0;
 	size_t len_p = 0;
 
-	if (!len) /* if nothing left in the buffer, fill it */
+	if (!*len) /* if nothing left in the buffer, fill it */
 	{
 		/*bfree((void **)info->cmd_buf);*/
 		free(*buf);
@@ -29,8 +29,8 @@ ssize_t input_buf(info_t *info, char **buf, size_t *len)
 		{
 			if ((*buf)[r - 1] == '\n')
 			{
-				(buf)[r - 1] = '\0'; /* remove trailing newline */
-					r--;
+				(*buf)[r - 1] = '\0'; /* remove trailing newline */
+				r--;
 			}
 
 			info->linecount_flag = 1;
@@ -90,7 +90,7 @@ ssize_t get_input(info_t *info)
 }
 
 /**
- * read_buf - raeds a buffer
+ * raed - raeds a buffer
  * @info: parameter struct
  * @buf: buffer
  * @i: size
@@ -98,7 +98,7 @@ ssize_t get_input(info_t *info)
  * Return: r
  */
 
-ssize_t read_buf(info_t *info, char *buf, size_t *i)
+ssize_t raed(info_t *info, char *buf, size_t *i)
 {
 	ssize_t r = 0;
 
@@ -132,7 +132,7 @@ int _getline(info_t *info, char **ptr, size_t *length)
 		s = *length;
 	if (i == len)
 		i = len = 0;
-	r = read_buf(info, buf, &len);
+	r = raed(info, buf, &len);
 	if (r == -1 || (r == 0 && len == 0))
 		return (-1);
 	c = _strchr(buf + i, '\n');
