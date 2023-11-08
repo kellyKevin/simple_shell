@@ -90,8 +90,8 @@ typedef struct passinfo
 	int env_changed;
 	int status;
 
-	char *cmd_buf; /* pointer to cmd ; chain buffer, for memory mangement */
-		int cmd_buf_type; /* CMD_type ||, &&, ; */
+	char **cmd_buf; /* pointer to cmd ; chain buffer, for memory mangement */
+	int cmd_buf_type; /* CMD_type ||, &&, ; */
 	int readfd;
 	int histcount;
 } info_t;
@@ -142,7 +142,7 @@ char *_strcat(char *, char *);
 char *_strcpy(char *, char *);
 char *_strdup(const char *);
 void _puts(char *);
-int _putchar(char);
+int _putchar(char *);
 
 /* string_functions3.c */
 char *_strncpy(char *, char *, int);
@@ -227,7 +227,7 @@ list_t *node_starts_with(list_t *, char *, char);
 ssize_t get_node_index(list_t *, list_t *);
 
 /* chain.c */
-int is_chain(info_t *, char *, size_t *);
+int is_chain(info_t *, char, size_t *);
 void check_chain(info_t *, char *, size_t *, size_t, size_t);
 int replace_alias(info_t *);
 int replace_vars(info_t *);
