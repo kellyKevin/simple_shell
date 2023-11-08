@@ -19,7 +19,7 @@
 
 /* for command chaining */
 #define CMD_NORM	0
-#define CMD_OR	1
+#define CMD_OR		1
 #define CMD_AND		2
 #define CMD_CHAIN	3
 
@@ -52,7 +52,7 @@ typedef struct liststr
 
 /**
  * struct passinfo - contains pseudo-arguements to pass into a function,
- * allowing uniform prototype for function pointer struct
+ * 			allowing uniform prototype for function pointer struct
  * @arg: a string generated from getline containing arguements
  * @argv: an array of strings generated from arg
  * @path: a string path for the current command
@@ -227,7 +227,7 @@ list_t *node_starts_with(list_t *, char *, char);
 ssize_t get_node_index(list_t *, list_t *);
 
 /* chain.c */
-int is_chain(info_t *, char, size_t *);
+int is_chain(info_t *, char *, size_t *);
 void check_chain(info_t *, char *, size_t *, size_t, size_t);
 int replace_alias(info_t *);
 int replace_vars(info_t *);

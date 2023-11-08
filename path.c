@@ -15,6 +15,7 @@ int is_cmd(info_t *info, char *path)
 	(void)info;
 	if (!path || stat(path, &st))
 		return (0);
+
 	if (st.st_mode & S_IFREG)
 	{
 		return (1);
@@ -25,7 +26,7 @@ int is_cmd(info_t *info, char *path)
 /**
  * dup_chars - duplicates characters
  * @pathstr:the PATH string
- * @start: starting i9ndex
+ * @start: starting index
  * @stop: stopping index
  *
  * Return: pointer to new buffer
@@ -37,7 +38,7 @@ char *dup_chars(char *pathstr, int start, int stop)
 	int i = 0, k = 0;
 
 	for (k = 0, i = start; i < stop; i++)
-		if (pathstr[i] != '"')
+		if (pathstr[i] != ':')
 			buf[k++] = pathstr[i];
 	buf[k] = 0;
 	return (buf);
