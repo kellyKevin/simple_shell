@@ -55,7 +55,7 @@ int _mycd(info_t *info)
 	}
 	else if (strcmp(info->argv[1], "-") == 0)
 	{
-		if (!getenv(info, "OLDPWD="))
+		if (!_getenv(info, "OLDPWD="))
 		{
 			_puts(s);
 			_putchar('\n');
@@ -69,8 +69,8 @@ int _mycd(info_t *info)
 		chdir_ret = chdir(info->argv[1]);
 	if (chdir_ret == -1)
 	{
-		printf_error(info, "can't cd to");
-		_eputd(info->argv[1]), _eputchar('\n');
+		print_error(info, "can't cd to");
+		_eputs(info->argv[1]), _eputchar('\n');
 	}
 	else
 	{
@@ -93,6 +93,6 @@ int _myhelp(info_t *info)
 
 	_puts("help call works. Function not yet implemented\n");
 	if (0)
-		_puts(arg_arrays);/**temp att unused workaround*/
+		_puts(*arg_array);/**temp att unused workaround*/
 	return (0);
 }
