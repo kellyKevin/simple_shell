@@ -90,7 +90,7 @@ ssize_t get_input(info_t *info)
 }
 
 /**
- * raed - raeds a buffer
+ * read_buf - reads a buffer
  * @info: parameter struct
  * @buf: buffer
  * @i: size
@@ -98,7 +98,7 @@ ssize_t get_input(info_t *info)
  * Return: r
  */
 
-ssize_t raed(info_t *info, char *buf, size_t *i)
+ssize_t read_buf(info_t *info, char *buf, size_t *i)
 {
 	ssize_t r = 0;
 
@@ -132,7 +132,7 @@ int _getline(info_t *info, char **ptr, size_t *length)
 		s = *length;
 	if (i == len)
 		i = len = 0;
-	r = raed(info, buf, &len);
+	r = read_buf(info, buf, &len);
 	if (r == -1 || (r == 0 && len == 0))
 		return (-1);
 	c = _strchr(buf + i, '\n');
